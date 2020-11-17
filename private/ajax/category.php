@@ -5,15 +5,6 @@ require_once "../model/AvailableAssets.php";
 
 $category  = new AvailableAssets(); 
 
-// $Id        = isset( $_POST["Id"] ) ? cleanString( $_POST["Id"] )              : "";
-// $Direccion = isset( $_POST["Direccion"] ) ? cleanString( $_POST["Direccion"] ): "";
-// $Telefono  = isset( $_POST["Telefono"] ) ? cleanString( $_POST["Telefono"] )  : "";  
-// $Codigo    = isset( $_POST["Codigo"] ) ? cleanString( $_POST["Codigo"] )      : "";    
-// $Ciudad    = isset( $_POST["Ciudad"] ) ? cleanString( $_POST["Ciudad"] )      : "";    
-// $Tipo      = isset( $_POST["Tipo"] ) ? cleanString( $_POST["Tipo"] )          : "";      
-// $Precio    = isset( $_POST["Precio"] ) ? cleanString( $_POST["Precio"] )      : "";    
-// $Status    = isset( $_POST["state"] ) ? cleanString( $_POST["state"] )        : 0 ; 
-
 header('Content-Type: application/json');
 
 switch ($_GET["operador"]) {
@@ -34,22 +25,6 @@ switch ($_GET["operador"]) {
                 echo "Parametros erroneos para agregar el bien";
         }
         break;
-    case 'update':
-        if ( empty($Id) ) {
-            $text = $category-updateAssets( $Id, $Direccion,$Ciudad,$Telefono,$Codigo,$Tipo,$Precio,$Status ); 
-            echo $text ? "Bien Editado" : "No se pudo Editar el bien";
-        }else{
-            echo "El bien que sesea Eliminar no está registrado";
-        }
-        break;
-    case 'delete':
-        if ( empty($Id) ) {
-            $text = $category->DeleteAssets($Id, $Status); 
-            echo $text ? "Bien registrado" : "No se pudo registrar el bien";
-        }else{
-            echo "El bien que sesea Eliminar no está registrado";
-        }
-        break;
     
     case 'show':
             $text = $category->showAssetsList(); 
@@ -68,7 +43,6 @@ switch ($_GET["operador"]) {
         $datos_bienes = file_get_contents("../data-1.json");
         $json_bienes  = json_decode($datos_bienes);
         $flag = false;
-        // var_dump( count($json_bienes) );
         for ($i=0; $i < count($json_bienes); $i++) { 
             $dataAsset = $json_bienes[$i];
             foreach ($dataAsset as $key => $value) {
@@ -102,10 +76,6 @@ switch ($_GET["operador"]) {
                 );
 
             }
-            
-            // var_dump($results);
-
-
             printf( $text ? json_encode( $data ) : "No hay data");
         
         break;

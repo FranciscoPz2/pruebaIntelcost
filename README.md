@@ -34,7 +34,7 @@ Prueba suplos desarrollador backend
     </ol>
   </div>
   <div>
-    <h3>Fron End</h3>
+    <h3>Front End</h3>
     <h5> En la seccion public se encontrara todo el tema de front </h5>
     <h5> js, css, fonts, img</h5>
     <h5> Se utiliza jquery y Ajax para conectar con el Backend </h5>
